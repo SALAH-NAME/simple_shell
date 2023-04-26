@@ -50,7 +50,7 @@ void execute_command(char **argv, char **args)
 	}
 	else if (pid == 0)
 	{
-	if (execve(argv[0], argv, NULL) == -1)
+		if (execve(argv[0], argv, NULL) == -1)
 		{
 			printf("%s: No such file or directory\n", args[0]);
 			exit(EXIT_FAILURE);
@@ -84,7 +84,8 @@ int main(int __attribute__((unused))argc, char __attribute__((unused))**args)
 		while (1)
 		{
 			print_prompt();
-			if ((nread = read_input(&line, &len)) == 0)
+			nread = read_input(&line, &len);
+			if (nread == 0)
 			{
 				break;
 			}
@@ -95,7 +96,8 @@ int main(int __attribute__((unused))argc, char __attribute__((unused))**args)
 	}
 	else
 	{
-		if ((nread = read_input(&line, &len)) != 0)
+		nread = read_input(&line, &len);
+		if (nread != 0)
 		{
 			argv[0] = line;
 			argv[1] = NULL;
