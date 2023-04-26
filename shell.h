@@ -7,5 +7,8 @@
 #include <string.h>
 #include <sys/wait.h>
 
+void print_prompt(void);
+ssize_t read_input(char **line, size_t *len);
+void execute_command(char **argv, char **args);
 
 #endif
