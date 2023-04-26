@@ -1,7 +1,9 @@
 #include "shell.h"
 
 /**
- * print_prompt - Prints the prompt "#cisfun$ " to the console.
+ * print_prompt - prints prompt
+ *
+ * Return: void
  */
 
 void print_prompt(void)
@@ -10,11 +12,11 @@ void print_prompt(void)
 }
 
 /**
- * read_input - Reads input from the console and stores it in a buffer.
- * @line: Pointer to the buffer.
- * @len: Length of the buffer.
+ * read_input - reads input from user
+ * @line: pointer to line buffer
+ * @len: pointer to line length
  *
- * Return: Number of bytes read.
+ * Return: number of characters read
  */
 
 ssize_t read_input(char **line, size_t *len)
@@ -32,9 +34,11 @@ ssize_t read_input(char **line, size_t *len)
 }
 
 /**
- * execute_command - Executes the command stored in the buffer.
- * @argv: Array of pointers containing the command and its arguments.
- * @args: Array of pointers containing the program name and its arguments.
+ * execute_command - executes command
+ * @argv: pointer to argument vector
+ * @args: pointer to argument string
+ *
+ * Return: void
  */
 
 void execute_command(char **argv, char **args)
@@ -63,13 +67,11 @@ void execute_command(char **argv, char **args)
 }
 
 /**
- * main - Entry point. Runs an infinite loop that prints a prompt,
- * reads input from the console, and executes the command stored in
- * the buffer.
- * @argc: Number of command-line arguments.
- * @args: Array of pointers to strings containing the command-line arguments.
+ * main - entry point
+ * @argc: number of arguments passed to program
+ * @args: array of pointers to argument strings
  *
- * Return: Always 0.
+ * Return: EXIT_SUCCESS on success, EXIT_FAILURE on failure
  */
 
 int main(int __attribute__((unused))argc, char __attribute__((unused))**args)
@@ -79,7 +81,7 @@ int main(int __attribute__((unused))argc, char __attribute__((unused))**args)
 	char *argv[2];
 	ssize_t nread;
 
-	if (isatty(fileno(stdin)))
+	if (isatty(STDIN_FILENO))
 	{
 		while (1)
 		{
