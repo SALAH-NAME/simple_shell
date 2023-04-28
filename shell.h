@@ -10,5 +10,6 @@
 void print_prompt(void);
 ssize_t read_input(char **line, size_t *len);
 void execute_command(char **argv, char **args);
+char **split_string(char *str);
 
 #endif
