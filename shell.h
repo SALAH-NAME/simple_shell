@@ -7,9 +7,8 @@
 #include <string.h>
 #include <sys/wait.h>
 
-void print_prompt(void);
-ssize_t read_input(char **line, size_t *len);
-void execute_command(char **argv, char **args);
-char **split_string(char *str);
+#define MAX_ARGS 128
+
+char **split_line(char *line, int *nargs);
 
 #endif
