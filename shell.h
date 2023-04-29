@@ -14,5 +14,6 @@ void execute_command_in_path(char **args);
 void exit_shell(char **args);
 void execute_command(char **args, char *argv);
 char **split_line(char *line, int *nargs);
+char *_strtok(char *str, const char *delim);
 
 #endif
