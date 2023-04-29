@@ -26,8 +26,11 @@ int main(int __attribute__((unused)) argc, char __attribute__((unused)) **argv)
 		args = split_line(line, &nargs);
 		if (nargs > 0)
 			execute_command(args, argv[0]);
+
 		free(args);
 	}
+	free(line);
+	free(args);
 	free(line);
 	return (0);
 }

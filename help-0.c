@@ -34,6 +34,7 @@ void exit_shell(char **args)
 
 	if (args[1] != NULL)
 		exit_status = atoi(args[1]);
+	free(args);
 	exit(exit_status);
 }
 
@@ -69,8 +70,9 @@ void execute_command(char **args, char *argv)
 		if (isatty(STDIN_FILENO))
 			fprintf(stderr, "%s: command not found\n", args[0]);
 		else
-			fprintf(stderr, "%s: %d: %s: not found\n", argv,
-					++command_number, args[0]);
+			fprintf(stderr, "%s: %d: %s: not found\n", argv, ++command_number, args[0]);
+
+		free(args);
 		exit(127);
 	}
 	else
@@ -101,5 +103,6 @@ char **split_line(char *line, int *nargs)
 	args[i] = NULL;
 	*nargs = i;
 
+	free(arg);
 	return (args);
 }
